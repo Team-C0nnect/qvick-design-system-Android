@@ -11,7 +11,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.Team-C0nnect"
                 artifactId = "qvick-design-system"
-                version = "1.0.5"
+                version = "1.0.8"
             }
         }
     }
