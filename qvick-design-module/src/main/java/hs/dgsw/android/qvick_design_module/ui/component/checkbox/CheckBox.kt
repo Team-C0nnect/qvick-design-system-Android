@@ -1,6 +1,5 @@
 package hs.dgsw.android.qvick_design_module.ui.component.checkbox
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Checkbox
@@ -42,10 +41,7 @@ fun MiniTextCheckBox(
                 uncheckedColor = common0,
                 checkmarkColor = primaryColorBlue500
             ),
-            onCheckedChange = {
-                checkedStatus = it
-                Log.d("test", "$checkedStatus")
-            },
+            onCheckedChange = { checkedStatus = it },
         )
         Row(
             modifier = modifier,

@@ -34,15 +34,16 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val test : MutableState<String> = rememberSaveable {
+                    val test: MutableState<String> = rememberSaveable {
                         mutableStateOf("")
                     }
 
                     Column {
                         QvickCheckEmailTextField(
                             text = test.value,
-                            onValueChange = {old , new, length ->
-                                test.value =  if (new.length > length || new.any { !it.isDigit() }) old else new
+                            onValueChange = { old, new, length ->
+                                test.value =
+                                    if (new.length > length || new.any { !it.isDigit() }) old else new
                                 test.value
                             }
                         )
@@ -67,20 +68,25 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun GreetingPreview() {
     QvickdesignsystemAOSTheme {
         Greeting("Android")
-                    val test = arrayOf<String>("", "", "")
-                    LazyColumn(
-                        modifier = Modifier.fillMaxSize(1f),
-                        content = {
-                            itemsIndexed(
-                                items = test,
-                                key = null
-                            ) {index, item ->
-                                Notification(title ="$index", date ="2020-2-20", writer ="이건의", description ="ㄱㅓㄴㅣㄱㅏㅆㅡㄴ ㄱㅗㅇㅈㅣ") {
-                                    IcNotifications(contentDescription = "")
-                                }
-                            }
-                        }
-                    )
-
+        val test = arrayOf<String>("", "", "")
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(1f),
+            content = {
+                itemsIndexed(
+                    items = test,
+                    key = null
+                ) { index, item ->
+                    Notification(
+                        title = "$index",
+                        date = "2020-2-20",
+                        writer = "이건의",
+                        description = "ㄱㅓㄴㅣㄱㅏㅆㅡㄴ ㄱㅗㅇㅈㅣ"
+                    ) {
+                        IcNotifications(contentDescription = "")
+                    }
                 }
             }
+        )
+
+    }
+}

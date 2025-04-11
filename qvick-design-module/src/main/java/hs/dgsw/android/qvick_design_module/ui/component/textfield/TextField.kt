@@ -16,7 +16,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -66,9 +65,15 @@ fun TextField(
 fun QvickCheckEmailTextField(
     text: String,
     length: Int = 4,
-    charTextField: @Composable (Char, Boolean) -> Unit = {char, isFocused -> QvickCharContainer(Modifier, char, isFocused) },
+    charTextField: @Composable (Char, Boolean) -> Unit = { char, isFocused ->
+        QvickCharContainer(
+            Modifier,
+            char,
+            isFocused
+        )
+    },
     onValueChange: (String, String, Int) -> String = { _, new, _ -> new },
-    keyboardOptions : KeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+    keyboardOptions: KeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
 ) {
     BasicTextField(
         value = text,
@@ -88,8 +93,8 @@ fun QvickCheckEmailTextField(
                 }
                 repeat(abs(length - text.length)) {
                     charTextField(
-                         ' ',
-                         false
+                        ' ',
+                        false
                     )
                 }
             }
@@ -103,8 +108,8 @@ private fun QvickCharContainer(
     modifier: Modifier = Modifier,
     text: Char,
     isFocused: Boolean,
-    width : Dp = 74.dp,
-    height : Dp = 84.dp
+    width: Dp = 74.dp,
+    height: Dp = 84.dp,
 ) {
     val shape = remember { RoundedCornerShape(4.dp) }
 
@@ -143,14 +148,14 @@ private fun QvickCharContainer(
 @Composable
 fun TextFieldTest() {
 
-    val test : MutableState<String> = rememberSaveable {
+    val test: MutableState<String> = rememberSaveable {
         mutableStateOf("")
     }
     Column {
         Text(text = test.value)
         QvickCheckEmailTextField(
             text = test.value,
-            onValueChange = {old , new, length ->
+            onValueChange = { old, new, length ->
                 if (new.length > length || new.any { !it.isDigit() }) old else new
             }
         )

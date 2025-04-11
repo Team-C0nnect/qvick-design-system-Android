@@ -37,11 +37,11 @@ import hs.dgsw.android.qvick_design_module.ui.theme.pretendard
 
 @Composable
 fun Notification(
+    modifier: Modifier = Modifier,
     title: String,
     date: String,
     writer: String,
     description: String,
-    modifier: Modifier = Modifier,
     icon: @Composable () -> Unit,
 ) {
     val isVisibility = remember {
@@ -49,14 +49,14 @@ fun Notification(
     }
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .padding(start = 30.dp, end = 30.dp)
             .wrapContentHeight()
     ) {
         Column(
             modifier = Modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(opacity0)
+                .clip(RoundedCornerShape(8.dp))
+                .background(opacity0)
         ) {
             Box(
                 modifier = Modifier
@@ -144,19 +144,8 @@ fun DescriptionText(description: String, modifier: Modifier = Modifier) {
             fontSize = 16.sp,
             fontFamily = pretendard,
             fontWeight = FontWeight.Medium
-            )
+        )
     }
-}
-
-@Preview(showBackground = true, backgroundColor = 500)
-@Composable
-fun GreetingPreview() {
-    Notification(
-        "test",
-        "0000-00-00",
-        "이진식",
-        "대충 디스크립션입니다잉."
-    ) { IcNotifications(contentDescription = "") }
 }
 
 @Composable
@@ -174,4 +163,16 @@ fun DrawLine(modifier: Modifier = Modifier) {
             strokeWidth = 0.8.dp.toPx(),
         )
     }
+}
+
+@Preview(showBackground = true, backgroundColor = 500)
+@Composable
+fun TestNotification() {
+    Notification(
+        modifier = Modifier,
+        "test",
+        "0000-00-00",
+        "이진식",
+        "대충 디스크립션입니다잉."
+    ) { IcNotifications(contentDescription = "") }
 }
