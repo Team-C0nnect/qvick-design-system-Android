@@ -7,12 +7,11 @@ plugins {
 
 android {
     namespace = "hs.dgsw.android.qvick_design_system_aos"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "hs.dgsw.android.qvick_design_system_aos"
-        minSdk = 28
-        targetSdk = 34
+        minSdk = 19
         versionCode = 1
         versionName = "1.0"
 
