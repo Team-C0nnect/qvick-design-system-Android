@@ -1,6 +1,5 @@
 package hs.dgsw.android.qvick_design_module.ui.component.text
 
-import android.util.Log
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,8 +15,9 @@ import hs.dgsw.android.qvick_design_module.ui.theme.primaryColorBlue500
 import hs.dgsw.android.qvick_design_module.ui.theme.statusDestructive
 
 @Composable
-fun RequiredText(modifier: Modifier = Modifier, textSize : TextUnit = 16.sp){
+fun RequiredText(modifier: Modifier = Modifier, textSize: TextUnit = 16.sp) {
     Text(
+        modifier = modifier,
         text = "(필수)",
         fontSize = textSize,
         color = statusDestructive
@@ -26,15 +26,16 @@ fun RequiredText(modifier: Modifier = Modifier, textSize : TextUnit = 16.sp){
 
 @Composable
 fun LinkText(
-    modifier:Modifier = Modifier,
-    text : String,
-    link : String,
+    modifier: Modifier = Modifier,
+    text: String,
+    link: String,
     style: TextStyle = TextStyle(
         color = primaryColorBlue500,
         textDecoration = TextDecoration.Underline,
-        fontSize = 20.sp),
-    tag : String = "URL"
-    ) {
+        fontSize = 20.sp
+    ),
+    tag: String = "URL",
+) {
     val annotatedString = buildAnnotatedString {
         pushStringAnnotation(tag = tag, annotation = link)
         withStyle(style = style.toSpanStyle()) {
@@ -43,13 +44,14 @@ fun LinkText(
         pop()
     }
     val uriHandler = LocalUriHandler.current
-    ClickableText(text = annotatedString, onTextLayout = {
-
-    }) { offset ->
-        Log.d("tag", "testsetst")
+    ClickableText(
+        modifier = modifier,
+        text = annotatedString,
+        onTextLayout = {}
+    ) { offset ->
         annotatedString.getStringAnnotations(tag = tag, start = offset, end = offset)
-            .firstOrNull()?.let {stringAnnotation ->
+            .firstOrNull()?.let { stringAnnotation ->
                 uriHandler.openUri(stringAnnotation.item)
-        }
+            }
     }
 }

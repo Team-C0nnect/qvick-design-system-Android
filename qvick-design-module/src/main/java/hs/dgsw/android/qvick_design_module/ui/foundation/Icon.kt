@@ -72,7 +72,7 @@ fun IcNavigate_next(
     contentDescription: String?,
     tint: Color = common0,
 
-) {
+    ) {
     Icon(
         modifier = modifier,
         painter = painterResource(id = R.drawable.ic_navigate_next),
