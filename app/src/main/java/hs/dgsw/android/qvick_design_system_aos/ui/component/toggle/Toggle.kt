@@ -22,7 +22,7 @@ import hs.dgsw.android.qvick_design_system_aos.ui.theme.statusInfo
 fun ToggleSet(
     setLength: Int = 3,
     selected: Int = 0,
-    betweenPadding : Dp = 8.dp,
+    betweenPadding: Dp = 8.dp,
     item: @Composable (Boolean) -> Unit,
 ) {
     Row(horizontalArrangement = Arrangement.spacedBy(betweenPadding)) {
@@ -43,13 +43,7 @@ fun Toggle(
     if (isSelect) {
         tint = selectTint
     }
-
-    Box(
-        modifier = modifier
-            .background(color = tint)
-    ) {
-
-    }
+    Box(modifier = modifier.background(color = tint)) { }
 }
 
 @Preview(showBackground = true)
@@ -57,18 +51,18 @@ fun Toggle(
 fun Thread() {
     Column {
         Toggle(
-            modifier = Modifier.width(width = 12.dp)
+            modifier = Modifier
+                .width(width = 12.dp)
                 .height(height = 12.dp)
                 .clip(CircleShape),
             selectTint = statusInfo,
             unSelectTint = opacity5,
             isSelect = true
         )
-        ToggleSet (
-
-        ){isSelect->
+        ToggleSet { isSelect ->
             Toggle(
-                modifier = Modifier.width(width = 12.dp)
+                modifier = Modifier
+                    .width(width = 12.dp)
                     .height(height = 12.dp)
                     .clip(CircleShape),
                 selectTint = statusInfo,
@@ -77,5 +71,4 @@ fun Thread() {
             )
         }
     }
-
 }

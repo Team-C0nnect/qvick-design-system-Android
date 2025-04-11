@@ -2,11 +2,11 @@ package hs.dgsw.android.qvick_design_system_aos.ui.foundation
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import hs.dgsw.android.qvick_design_system_aos.R
 import hs.dgsw.android.qvick_design_system_aos.ui.theme.common0
@@ -15,7 +15,7 @@ import hs.dgsw.android.qvick_design_system_aos.ui.theme.common0
 fun IcAccount(
     modifier: Modifier = Modifier,
     contentDescription: String?,
-    tint: Color = common0,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier.size(32.dp),
@@ -29,7 +29,7 @@ fun IcAccount(
 fun IcEdit(
     modifier: Modifier = Modifier,
     contentDescription: String?,
-    tint: Color = common0,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier.size(32.dp),
@@ -43,7 +43,7 @@ fun IcEdit(
 fun IcHome(
     modifier: Modifier = Modifier,
     contentDescription: String?,
-    tint: Color = common0,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier.size(32.dp),
@@ -57,7 +57,7 @@ fun IcHome(
 fun IcNavigate_before(
     modifier: Modifier = Modifier,
     contentDescription: String?,
-    tint: Color = common0,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier.size(32.dp),
@@ -71,9 +71,9 @@ fun IcNavigate_before(
 fun IcNavigate_next(
     modifier: Modifier = Modifier,
     contentDescription: String?,
-    tint: Color = common0,
+    tint: Color = LocalContentColor.current,
 
-) {
+    ) {
     Icon(
         modifier = modifier,
         painter = painterResource(id = R.drawable.ic_navigate_next),
@@ -87,7 +87,7 @@ fun IcNavigate_next(
 fun IcNone(
     modifier: Modifier = Modifier,
     contentDescription: String?,
-    tint: Color = common0,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier.size(32.dp),
@@ -101,7 +101,7 @@ fun IcNone(
 fun IcNotifications(
     modifier: Modifier = Modifier,
     contentDescription: String?,
-    tint: Color = common0,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier.size(32.dp),
@@ -115,7 +115,7 @@ fun IcNotifications(
 fun IcPerson(
     modifier: Modifier = Modifier,
     contentDescription: String?,
-    tint: Color = common0,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier.size(32.dp),
@@ -124,5 +124,3 @@ fun IcPerson(
         tint = tint
     )
 }
-
-// here!

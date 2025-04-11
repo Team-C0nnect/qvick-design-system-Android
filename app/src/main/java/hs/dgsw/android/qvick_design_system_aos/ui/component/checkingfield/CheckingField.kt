@@ -1,10 +1,11 @@
 package hs.dgsw.android.qvick_design_system_aos.ui.component.checkingfield
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,8 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,21 +33,21 @@ import hs.dgsw.android.qvick_design_system_aos.ui.theme.opacity0
 import hs.dgsw.android.qvick_design_system_aos.ui.theme.pretendard
 import hs.dgsw.android.qvick_design_system_aos.ui.theme.statusDestructive
 import hs.dgsw.android.qvick_design_system_aos.ui.theme.statusPositive
+import hs.dgsw.android.qvick_design_system_aos.util.Pattern
+import hs.dgsw.android.qvick_design_system_aos.util.formattingToDate
 
-// 만약 출석체크가 안 됬있다면, 빈 스트링 넣으시면 됨니다.
 @Composable
 fun CheckingField(
     modifier: Modifier = Modifier,
     isChecked: Boolean = false,
-    toDayDate: String = "2024.05.24",
-    checkingTime: MutableState<String> = mutableStateOf<String>(""),
+    date: String? = "2025-04-01T17:22:56.640718",
     checking: () -> Unit = {},
 ) {
     val buttonText: MutableState<String> = remember { mutableStateOf<String>("출석체크 미완료") }
     Surface(
         modifier = modifier
-            .padding(horizontal = 30.dp)
-
+            .clip(RoundedCornerShape(8.dp))
+            .shadow(4.dp)
     ) {
         Column(
             modifier = Modifier
@@ -57,78 +57,79 @@ fun CheckingField(
             horizontalAlignment = Alignment.CenterHorizontally
 
         ) {
-            Box() {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 if (isChecked) {
                     Button12(
                         modifier = Modifier
                             .height(height = 48.dp)
                             .fillMaxWidth(),
+                        text = "출석체크 완료",
+                        enabled = false,
+                        tint = statusPositive
+                    ) {}
+                } else {
+                    Button12(
+                        modifier = Modifier
+                            .height(height = 48.dp)
+                            .width(207.dp),
                         text = buttonText.value,
                         enabled = true,
-                        tint = statusPositive
+                        tint = statusDestructive
                     ) {
-
-                    }
-                } else {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-
-                        Button12(
-                            modifier = Modifier
-                                .height(height = 48.dp)
-                                .width(207.dp),
-                            text = buttonText.value,
-                            enabled = true,
-                            tint = statusDestructive
-                        ) {
-                            checking()
-                        }
-
-                        Box(
-                            modifier = modifier
-                                .padding(all = 4.dp),
-
-                            ) {
-                            IcNavigate_next(
-                                contentDescription = "", modifier = Modifier
-                                    .size(48.dp)
-                                    .clip(RoundedCornerShape(12.dp))
-                                    .background(color = common100)
-                            )
-                        }
-
+                        checking()
                     }
                 }
 
+                IcNavigate_next(
+                    contentDescription = "", modifier = Modifier
+                        .size(48.dp)
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(color = common100)
+                        .clickable {
+                            checking()
+                        }
+                )
             }
-            Box(modifier = Modifier.padding(top = 16.dp))
+            Spacer(modifier = Modifier.padding(top = 16.dp))
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 4.dp, horizontal = 11.5.dp),
+                    .padding(vertical = 4.dp, horizontal = 8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = toDayDate,
+                    text = formattingToDate(date),
                     fontSize = 16.sp,
                     fontFamily = pretendard,
                     fontWeight = FontWeight.Medium
-                    )
-                Text(
-                    text = checkingTime.value,
-                    color = statusPositive,
-                    fontSize = 24.sp,
-                    fontFamily = pretendard,
-                    fontWeight = FontWeight.SemiBold
                 )
-
+                if (isChecked) {
+                    Text(
+                        text = formattingToTime(date),
+                        color = statusPositive,
+                        fontSize = 24.sp,
+                        fontFamily = pretendard,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
             }
-
         }
+    }
+}
+
+private fun formattingToTime(date: String?): String {
+    return if (date == null) {
+        ""
+    } else if (date.contains(Pattern.dateRegex)) {
+        val time = date.substringAfter("T").substringBefore(".").split(":")
+        "${time[0]}시 ${time[1]}분"
+    } else {
+        date
     }
 }
 

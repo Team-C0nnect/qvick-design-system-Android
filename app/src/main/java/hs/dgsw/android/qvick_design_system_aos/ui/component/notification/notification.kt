@@ -1,6 +1,5 @@
 package hs.dgsw.android.qvick_design_system_aos.ui.component.notification
 
-import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,11 +12,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,46 +33,56 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import hs.dgsw.android.qvick_design_system_aos.data.colors.NotificationColors
 import hs.dgsw.android.qvick_design_system_aos.ui.foundation.IcNotifications
 import hs.dgsw.android.qvick_design_system_aos.ui.theme.common0
 import hs.dgsw.android.qvick_design_system_aos.ui.theme.opacity0
+import hs.dgsw.android.qvick_design_system_aos.ui.theme.opacity100
 import hs.dgsw.android.qvick_design_system_aos.ui.theme.opacity74
 import hs.dgsw.android.qvick_design_system_aos.ui.theme.pretendard
+import hs.dgsw.android.qvick_design_system_aos.ui.theme.primaryColorBlue100
+import hs.dgsw.android.qvick_design_system_aos.ui.theme.primaryColorBlue500
+import hs.dgsw.android.qvick_design_system_aos.util.formattingToDate
 
 
 @Composable
 fun Notification(
-    title: String,
+    modifier: Modifier = Modifier,
+    title: String? = null,
     date: String,
     writer: String,
     description: String,
-    modifier: Modifier = Modifier,
+    colors: NotificationColors = NotificationDefaults.colors(),
+    descriptionVerticalPaddingValues: Arrangement.Vertical = Arrangement.spacedBy(4.dp),
+    isShowTitleInDescription: Boolean = true,
     icon: @Composable () -> Unit,
 ) {
-    val isVisibility = remember {
+    var isVisibility by remember {
         mutableStateOf(false)
     }
+    val iconColor = colors.iconColor(isVisibility).value
 
     Box(
-        modifier = Modifier
-            .padding(start = 30.dp, end = 30.dp)
+        modifier = modifier
             .wrapContentHeight()
     ) {
         Column(
             modifier = Modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(opacity0)
+                .clip(RoundedCornerShape(8.dp))
+                .background(
+                    if (isVisibility) {
+                        colors.expandBackgroundColor
+                    } else {
+                        colors.unExpandBackgroundColor
+                    }
+                )
         ) {
             Box(
                 modifier = Modifier
-                    .clickable {
-                        isVisibility.value = !isVisibility.value
-                        Log.d("TAG", "clicked Box | isVisibility : $isVisibility")
-                    }
+                    .clickable { isVisibility = !isVisibility }
                     .wrapContentWidth()
                     .fillMaxWidth(1F),
-
-                ) {
+            ) {
                 Row(
                     modifier = Modifier
                         .wrapContentWidth()
@@ -84,79 +99,138 @@ fun Notification(
                         modifier = Modifier,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        icon()
+                        CompositionLocalProvider(LocalContentColor provides iconColor) {
+                            icon()
+                        }
+
                         Column(
-                            modifier = Modifier.padding(
-                                start = 12.dp
-                            )
+                            modifier = Modifier
+                                .padding(start = 12.dp)
+                                .fillMaxWidth()
                         ) {
                             Text(
-                                text = title,
+                                text = title ?: "제목없는 공지",
                                 modifier = Modifier,
                                 style = TextStyle.Default,
                                 fontSize = 18.sp,
                                 fontFamily = pretendard,
-                                fontWeight = FontWeight.SemiBold
+                                fontWeight = FontWeight.SemiBold,
+                                color = if (isVisibility) {
+                                    colors.expandTitleColor
+                                } else {
+                                    colors.unExpandTitleColor
+                                }
                             )
                             Spacer(modifier = Modifier.padding(top = 4.dp))
-                            Text(
-                                text = date,
-                                modifier = Modifier,
-                                style = TextStyle.Default,
-                                color = opacity74,
-                                fontSize = 12.sp,
-                                fontFamily = pretendard,
-                                fontWeight = FontWeight.Medium
-                            )
+                            Row(
+                                Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(
+                                    text = formattingToDate(date),
+                                    modifier = Modifier,
+                                    style = TextStyle.Default,
+                                    fontSize = 12.sp,
+                                    fontFamily = pretendard,
+                                    fontWeight = FontWeight.Medium,
+                                    color = if (isVisibility) {
+                                        colors.expandDateColor
+                                    } else {
+                                        colors.unExpandDateColor
+                                    }
+                                )
+                                Text(
+                                    text = "작성자 : $writer",
+                                    modifier = Modifier
+                                        .align(alignment = Alignment.Bottom),
+                                    fontSize = 12.sp,
+                                    fontFamily = pretendard,
+                                    fontWeight = FontWeight.Medium,
+                                    color = if (isVisibility) {
+                                        colors.expandWriterColor
+                                    } else {
+                                        colors.unExpandWriterColor
+                                    }
+                                )
+                            }
                         }
                     }
-                    Text(
-                        text = "작성자 : $writer",
-                        modifier = Modifier
-                            .align(alignment = Alignment.Bottom),
-                        color = opacity74,
-                        fontSize = 12.sp,
-                        fontFamily = pretendard,
-                        fontWeight = FontWeight.Medium
-                    )
                 }
 
             }
-            if (isVisibility.value) {
+            if (isVisibility) {
                 DrawLine()
-                DescriptionText(description = description)
+                DescriptionText(
+                    title = if (isShowTitleInDescription) {
+                        title
+                    } else {
+                        null
+                    },
+                    description = description,
+                    colors = colors,
+                    verticalPaddingValues = descriptionVerticalPaddingValues,
+                    isShowTitleInDescription = isShowTitleInDescription
+                ) { isVisibility = !isVisibility }
             }
         }
     }
 }
 
+
 @Composable
-fun DescriptionText(description: String, modifier: Modifier = Modifier) {
+fun DescriptionText(
+    modifier: Modifier = Modifier,
+    title: String? = null,
+    description: String,
+    colors: NotificationColors,
+    verticalPaddingValues: Arrangement.Vertical = Arrangement.spacedBy(4.dp),
+    isShowTitleInDescription: Boolean,
+    onClick: () -> Unit,
+) {
     Column(
         modifier = modifier
+            .clickable { onClick() }
+            .background(colors.descriptionBackgroundColor)
             .padding(20.dp)
             .wrapContentWidth()
-            .fillMaxWidth(1F)
+            .fillMaxWidth(1F),
+        verticalArrangement = verticalPaddingValues
     ) {
+        if (isShowTitleInDescription) {
+            Text(
+                text = title ?: "제목없는 공지",
+                fontSize = 16.sp,
+                fontFamily = pretendard,
+                fontWeight = FontWeight.SemiBold,
+                color = colors.descriptionColor
+            )
+        }
+
         Text(
             text = description,
-            color = common0,
             fontSize = 16.sp,
             fontFamily = pretendard,
-            fontWeight = FontWeight.Medium
-            )
+            fontWeight = FontWeight.Medium,
+            color = colors.descriptionColor
+        )
     }
 }
 
 @Preview(showBackground = true, backgroundColor = 500)
 @Composable
 fun GreetingPreview() {
-    Notification(
-        "test",
-        "0000-00-00",
-        "이진식",
-        "대충 디스크립션입니다잉."
-    ) { IcNotifications(contentDescription = "") }
+    val verticalScrollState = rememberScrollState()
+    Column (modifier = Modifier.verticalScroll(verticalScrollState)){
+        for (i in 0..100) {
+            Notification(
+                modifier = Modifier,
+                "test",
+                "2025-04-07T16:31:14.654098",
+                "이진식",
+                "대충 디스크립션입니다잉."
+            ) { IcNotifications(contentDescription = "") }
+        }
+    }
 }
 
 @Composable
@@ -174,4 +248,34 @@ fun DrawLine(modifier: Modifier = Modifier) {
             strokeWidth = 0.8.dp.toPx(),
         )
     }
+}
+
+object NotificationDefaults {
+    fun colors(
+        unExpandBackgroundColor: Color = opacity0,
+        unExpandTitleColor: Color = opacity100,
+        unExpandIconColor: Color = opacity100,
+        unExpandWriterColor: Color = opacity74,
+        unExpandDateColor: Color = opacity74,
+        expandBackgroundColor: Color = opacity0,
+        expandTitleColor: Color = primaryColorBlue500,
+        expandIconColor: Color = primaryColorBlue500,
+        expandWriterColor: Color = primaryColorBlue100,
+        expandDateColor: Color = primaryColorBlue100,
+        descriptionColor: Color = primaryColorBlue500,
+        descriptionBackgroundColor: Color = primaryColorBlue100,
+    ) = NotificationColors(
+        unExpandBackgroundColor = unExpandBackgroundColor,
+        unExpandTitleColor = unExpandTitleColor,
+        unExpandIconColor = unExpandIconColor,
+        unExpandWriterColor = unExpandWriterColor,
+        unExpandDateColor = unExpandDateColor,
+        expandBackgroundColor = expandBackgroundColor,
+        expandTitleColor = expandTitleColor,
+        expandIconColor = expandIconColor,
+        expandWriterColor = expandWriterColor,
+        expandDateColor = expandDateColor,
+        descriptionColor = descriptionColor,
+        descriptionBackgroundColor = descriptionBackgroundColor
+    )
 }

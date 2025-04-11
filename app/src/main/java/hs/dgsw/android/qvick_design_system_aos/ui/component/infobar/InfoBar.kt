@@ -23,7 +23,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import hs.dgsw.android.qvick_design_system_aos.ui.foundation.IcHome
 import hs.dgsw.android.qvick_design_system_aos.ui.foundation.IcNavigate_next
 import hs.dgsw.android.qvick_design_system_aos.ui.foundation.IcNotifications
 import hs.dgsw.android.qvick_design_system_aos.ui.theme.common0
@@ -45,31 +44,31 @@ fun InfoBar(
                 shape = RoundedCornerShape(20.dp),
                 ambientColor = common0
             )
-
-
-//                .offset(x = (-0.5).dp, y = (-1.5).dp)
-
-
     ) {
-        Row (
-            modifier = modifier.background(color = opacity0)
-            .wrapContentHeight()
-            .fillMaxWidth(1f)
-            .clip(RoundedCornerShape(16.dp))
-            .padding(horizontal = 16.dp, vertical = 10.dp),
+        Row(
+            modifier = modifier
+                .background(color = opacity0)
+                .wrapContentHeight()
+                .fillMaxWidth(1f)
+                .clip(RoundedCornerShape(16.dp))
+                .padding(horizontal = 16.dp, vertical = 10.dp),
             horizontalArrangement = Arrangement.SpaceBetween
-            ){
+        ) {
             Row(
                 modifier = modifier,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 startIcon()
                 Box(Modifier.padding(end = 8.dp))
-                Text(text = context, fontSize = 16.sp, fontFamily = pretendard, fontWeight = FontWeight.Medium)
+                Text(
+                    text = context,
+                    fontSize = 16.sp,
+                    fontFamily = pretendard,
+                    fontWeight = FontWeight.Medium
+                )
             }
             endIcon()
         }
-
     }
 }
 
@@ -94,10 +93,13 @@ fun Test() {
     Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
         InfoBar(
             context = "test",
-            startIcon = { IcNotifications(modifier = Modifier.size(32.dp), contentDescription = "") },
+            startIcon = {
+                IcNotifications(
+                    modifier = Modifier.size(32.dp),
+                    contentDescription = ""
+                )
+            },
             endIcon = { IcNavigate_next(modifier = Modifier.size(32.dp), contentDescription = "") })
         ShadowModifier()
     }
 }
-
-//here
