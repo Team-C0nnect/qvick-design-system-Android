@@ -44,7 +44,6 @@ import hs.dgsw.android.qvick_design_system_aos.ui.theme.primaryColorBlue100
 import hs.dgsw.android.qvick_design_system_aos.ui.theme.primaryColorBlue500
 import hs.dgsw.android.qvick_design_system_aos.util.formattingToDate
 
-
 @Composable
 fun Notification(
     modifier: Modifier = Modifier,
