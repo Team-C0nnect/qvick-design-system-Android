@@ -20,11 +20,10 @@ afterEvaluate {
 
 android {
     namespace = "hs.dgsw.android.qvick_design_module"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
-        minSdk = 28
-        targetSdk = 34
+        minSdk = 19
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
