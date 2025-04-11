@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "hs.dgsw.android.qvick_design_system_aos"
-        minSdk = 21
+        minSdk = 26
         versionCode = 1
         versionName = "1.0"
 
