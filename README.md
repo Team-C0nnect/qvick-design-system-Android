@@ -53,5 +53,5 @@
   ![Image](https://github.com/user-attachments/assets/fa578a50-3acc-4210-8b69-bbc1fce17626)
 - 아이콘  
   ![Image](https://github.com/user-attachments/assets/14607a6b-1b4e-4696-88fb-22a47a4bce9d)
-- 컬러 시스템
-  ![Image](https://github.com/user-attachments/assets/c84023d5-4180-48d0-8bd5-6e4c9d8dd8f1)
+- 컬러 - 팔레트, 시멘틱
+  ![Image](https://github.com/user-attachments/assets/d96b4487-330a-4608-b63a-de1063ae1760)
