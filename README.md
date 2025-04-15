@@ -36,16 +36,22 @@
    compileOptions와 kotlinOptions를 통해 Java 1.8 및 해당 JVM 타겟 버전을 지정했습니다. 
    이를 통해, 람다, 스트림 API 등 Java 8의 기능과 Kotlin의 최신 기능을 안전하게 사용할 수 있습니다.
 
-## 디자인 컴포넌트 소개
+## 디자인 & 컴포넌트 소개
 - 텍스트 필드
-   
+  ![Image](https://github.com/user-attachments/assets/96352bf2-9ccf-4dd0-a579-4425fe0bd8b0)
 - 버튼
-   
+  ![Image](https://github.com/user-attachments/assets/d9b47ecb-f857-416c-99fd-1cbd5e948a6b)
 - 체크박스
-   
+  ![Image](https://github.com/user-attachments/assets/619a8276-cfc7-4775-bbf8-7a12dd786ec4)
 - 공지
-   
+  ![Image](https://github.com/user-attachments/assets/4e08ede4-f6db-41d3-a227-d9861acff8d2)
 - 링크 텍스트
-   
+  ![Image](https://github.com/user-attachments/assets/92852823-15f8-4a6c-89cb-23094afda1ae)
+- 정보 바
+  ![Image](https://github.com/user-attachments/assets/04874639-b594-4f88-8bae-76be745ae618)
+- 출석체크
+  ![Image](https://github.com/user-attachments/assets/fa578a50-3acc-4210-8b69-bbc1fce17626)
+- 아이콘  
+  ![Image](https://github.com/user-attachments/assets/14607a6b-1b4e-4696-88fb-22a47a4bce9d)
 - 컬러 시스템
-   
+  ![Image](https://github.com/user-attachments/assets/c84023d5-4180-48d0-8bd5-6e4c9d8dd8f1)
