@@ -1,3 +1,4 @@
+![Image](https://github.com/user-attachments/assets/551b3e46-7091-40b4-8c1d-6617949e7106)
 # qvick-design-system-AOS
 대구소프트웨어마이스터고등학교 기숙사 관리 플랫폼 Qvick V3 Android Design System  
 [![](https://jitpack.io/v/Team-C0nnect/qvick-design-system-AOS.svg)](https://jitpack.io/#Team-C0nnect/qvick-design-system-AOS)
@@ -22,6 +23,7 @@
    
 ## 앱 호환성 및 요구사항 
 이 라이브러리는 Android 앱 개발에 최적화되어 있으며, 다음과 같은 호환성 및 요구사항을 갖추고 있습니다.  
+
 **최소/타깃 SDK**
 - minSdkVersion 26  
 라이브러리는 Android 8.0 (API 26) 이상에서 동작하도록 설계되었습니다. 
