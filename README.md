@@ -3,14 +3,18 @@
 
 ## qvick-design-system 적용법
 1. 빌드파일에 JitPack저장소 추가 (gradle.kts 기준)
-    `dependencyResolutionManagement {
-        repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-        repositories {
-            mavenCentral()
-            maven { url = uri("https://jitpack.io") }
-        }
-    }`
-2. dependency부분에 의존성 추가
-    `dependencies {
+   ```
+   dependencyResolutionManagement {
+       repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+       repositories {
+           mavenCentral()
+           maven { url = uri("https://jitpack.io") }
+       }
+   }
+   ```
+2. dependency부분에 의존성 추가 
+    ```
+    dependencies {
         implementation("com.github.Team-C0nnect:qvick-design-system-AOS:Tag")
-    }`
+    }
+   ```
