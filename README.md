@@ -1,6 +1,5 @@
-![Image](https://github.com/user-attachments/assets/551b3e46-7091-40b4-8c1d-6617949e7106)
 # qvick-design-system-AOS
-대구소프트웨어마이스터고등학교 기숙사 관리 플랫폼 Qvick V3 Android Design System  
+![Image](https://github.com/user-attachments/assets/551b3e46-7091-40b4-8c1d-6617949e7106) 
 [![](https://jitpack.io/v/Team-C0nnect/qvick-design-system-AOS.svg)](https://jitpack.io/#Team-C0nnect/qvick-design-system-AOS)
 
 ## qvick-design-system 적용법
