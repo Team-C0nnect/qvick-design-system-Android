@@ -54,4 +54,4 @@
 - 아이콘  
   ![Image](https://github.com/user-attachments/assets/14607a6b-1b4e-4696-88fb-22a47a4bce9d)
 - 컬러 - 팔레트, 시멘틱
-  ![Image](https://github.com/user-attachments/assets/d96b4487-330a-4608-b63a-de1063ae1760)
+  ![Image](https://github.com/user-attachments/assets/8f032c0d-0645-43cc-9424-dee2d0bc50ee)
