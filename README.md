@@ -1,7 +1,6 @@
 # qvick-design-system-AOS
-![Image](https://github.com/user-attachments/assets/551b3e46-7091-40b4-8c1d-6617949e7106) 
-[![](https://jitpack.io/v/Team-C0nnect/qvick-design-system-AOS.svg)](https://jitpack.io/#Team-C0nnect/qvick-design-system-AOS)  
-Docs Language | [korea](https://github.com/Team-C0nnect/qvick-design-system-AOS)  
+![Image](https://github.com/user-attachments/assets/551b3e46-7091-40b4-8c1d-6617949e7106)
+Docs Language | [korea](https://github.com/Team-C0nnect/qvick-design-system-AOS) [![](https://jitpack.io/v/Team-C0nnect/qvick-design-system-AOS.svg)](https://jitpack.io/#Team-C0nnect/qvick-design-system-AOS)  
 Qvick의 Design System은 Google의 개발자 및 디자이너가 유지 관리하는 [Material3 공식 문서](https://material.io/)를 기반으로 제작되었습니다.  
 Jetpack Compose로 개발되었으며 버튼, 공지 등 다양한 컴포넌트를 제공합니다.  
 
