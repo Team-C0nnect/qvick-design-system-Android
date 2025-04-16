@@ -5,8 +5,8 @@ Docs Language | [korea](https://github.com/Team-C0nnect/qvick-design-system-AOS)
 Qvick의 Design System은 Google의 개발자 및 디자이너가 유지 관리하는 [Material3 공식 문서](https://material.io/)를 기반으로 제작되었습니다.  
 Jetpack Compose로 개발되었으며 버튼, 공지 등 다양한 컴포넌트를 제공합니다.  
 
-## qvick-design-system 적용법
-1. 빌드파일에 JitPack저장소 추가 (gradle.kts 기준)   
+## qvick-design-system 적용법 (gradle.kts)
+1. 빌드파일에 JitPack저장소 추가   
    ```
    dependencyResolutionManagement {
        repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -58,3 +58,7 @@ Jetpack Compose로 개발되었으며 버튼, 공지 등 다양한 컴포넌트�
   ![Image](https://github.com/user-attachments/assets/14607a6b-1b4e-4696-88fb-22a47a4bce9d)
 - 컬러 - 팔레트, 시멘틱
   ![Image](https://github.com/user-attachments/assets/8f032c0d-0645-43cc-9424-dee2d0bc50ee)
+
+## 기여자
+- [박형언](https://github.com/hyeong-eon)
+- [이진식](https://github.com/hom237)
