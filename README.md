@@ -62,3 +62,6 @@ Jetpack Compose로 개발되었으며 버튼, 공지 등 다양한 컴포넌트�
 ## 기여자
 - [박형언](https://github.com/hyeong-eon)
 - [이진식](https://github.com/hom237)
+## 다운로드
+<a href="https://play.google.com/store/apps/details?id=com.hs.dgsw.v3.qvick&hl=ko"><img alt="Get it on Google Play" src="docs/screenshot/img_google_play.webp" height="48px"/></a>
+<a href="https://apps.apple.com/kr/app/큐빅-기숙사-관리-플랫폼/id6478103080"><img alt="Get it on App Store (iOS)" src="docs/screenshot/img_app_store_ios.webp" height="48px"/></a>
