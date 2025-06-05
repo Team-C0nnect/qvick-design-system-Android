@@ -57,7 +57,7 @@ This library is optimized for Android app development and has the following comp
   ![Image](https://github.com/user-attachments/assets/fa578a50-3acc-4210-8b69-bbc1fce17626)
 - Icons 
   ![Image](https://github.com/user-attachments/assets/14607a6b-1b4e-4696-88fb-22a47a4bce9d)
-- Color - Pallet, Symentic
+- Color - palette, semantics
   ![Image](https://github.com/user-attachments/assets/8f032c0d-0645-43cc-9424-dee2d0bc50ee)
 
 ## Contributor
