@@ -1,7 +1,7 @@
 # qvick-design-system-AOS
 [![](https://jitpack.io/v/Team-C0nnect/qvick-design-system-AOS.svg)](https://jitpack.io/#Team-C0nnect/qvick-design-system-AOS)  
 ![Image](https://github.com/user-attachments/assets/551b3e46-7091-40b4-8c1d-6617949e7106)
-Docs Language | [korea](https://github.com/Team-C0nnect/qvick-design-system-Android/blob/main/README_KR.md) | [english](https://github.com/Team-C0nnect/qvick-design-system-Android/blob/main/README.md)  
+Docs Language | [korea](https://github.com/Team-C0nnect/qvick-design-system-Android/blob/main/README_KR.md) | [**english**](https://github.com/Team-C0nnect/qvick-design-system-Android/blob/main/README.md)  
 ## Summary
 Qvick's Design System is based on [Material3 Official Document](https://material.io/), which is maintained by Google's developers and designers.  
 Developed as Jetpack Compose, it provides various components such as buttons and announcements.
